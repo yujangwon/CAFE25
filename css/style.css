@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+
+/* 자주쓰는 색을 변수로 --변수명 */
+:root {
+  --primary-color: #047aed;
+  --secondary-color: #1c3fa8;
+  --dark-color: #002240;
+  --light-color: #f4f4f4;
+  --success-color: #5cb85c;
+  --error-color: #d9534f;
+}
+
+/* 각 태그들의 기본 마진/패딩을 초기값 0으로 하고 박스모델 기준을 보더-박스로 한다. */
+/* '*'은 모든 태그들을 선택 */
+* {  
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Nanum Gothic Coding', monospace;
+  color : #333;
+  /* 세로줄 간격 1.6배(160%) */
+  line-height: 1.6;
+}
+
+ul {
+  /* 리스트 앞의 기호(▪)를 없애준다 */
+  /* 이모지는 윈도우즈키 + 세미콜론(;) */
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color : #333;
+}
+
+h1,
+h2 {
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+img {
+  width: 100%;
+}
+
+code,
+pre {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.hidden {
+  /* 화면에 표시 안함 display: none; 과 같다 */
+  visibility: hidden;
+  height: 0;
+}
+
+/* 네브바 메뉴 */
+.navbar {
+  background-color : var(--primary-color);
+  color : #fff;
+  height : 70px;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  color : #fff;
+  padding : 10px;
+  margin : 0 5px;
+}
+
+.navbar a:hover {
+  border-bottom : 2px #fff solid;
+}
+
+.navbar .flex {
+  justify-content : space-between;
+}
+
+/* 섹션 쇼케이스 */
+.showcase {
+  height : 400px;
+  background-color : var(--primary-color);
+  color :#fff;
+  position : relative;
+}
+
+.showcase h1 {
+  font-size: 40px;
+}
+
+.showcase p {
+  margin: 20px 0;
+}
+
+.showcase .grid {
+  /* 지정된 구역을 넘어갔을때도 보이게 */
+  overflow : visible;
+  grid-template-columns: 55% auto;
+  gap: 30px;
+}
+
+.showcase-text {
+  animation : slideInFromLeft 1s ease-in;
+}
+
+.showcase-form {
+  /* 상대좌표 원래위치 기준으로 top, left, bottom, right 위치를 변경 */
+  position : relative;
+  top : 60px;
+  height: 350px;
+  width: 400px;
+  padding: 40px;
+  z-index: 100;
+  justify-self : flex-end;
+  animation: slideInFromRight 1s ease-in;
+}
+
+.showcase-form .form-control {
+  margin: 30px 0;
+}
+
+.showcase-form input[type='text'],
+.showcase-form input[type='email'] {
+  border : 0;
+  border-bottom: 1px solid #b4becb;
+  width : 100%;
+  padding: 3px;
+  font-size : 16px;
+}
+
+.showcase-form input:focus {
+  outline: none;
+}
+
+.showcase::before,
+.showcase::after {
+  content : '';
+  position: absolute;
+  height: 100px;
+  bottom: -70px;
+  right: 0;
+  left: 0;
+  background: #fff;
+  transform : skewY(-3deg);
+  -webkit-transform: skewy(-3deg);
+  -moz-transform: skewY(-3deg);
+  -ms-transform: skewy(-3deg);
+}
+
+/* 섹션 stats */
+.stats {
+  padding-top : 100px;
+  animation: slideInFromBottom 1s ease-in;
+}
+
+.stats-heading {
+  max-width : 500px;
+  margin: auto;
+}
+
+.stats .grid h3{
+  font-size: 35px;
+}
+
+.stats .grid p {
+ font-size: 20px;
+ font-weight: bold; 
+}
+
+/* Cli 섹션 */
+.cli .grid {
+  grid-template-columns : repeat(3, 1fr);
+  grid-template-rows : repeat(2, 1fr);
+}
+
+.cli .grid > *:first-child {
+  grid-column: 1/ span 2;
+  grid-row: 1/ span 2;
+}
+
+/* Cloud 섹션 */
+.cloud .grid {
+  grid-template-columns: 4fr 3fr;
+}
+
+/* Languages 섹션 */
+.languages .flex {
+  flex-wrap: wrap;
+}
+
+.languages .card {
+  text-align : center;
+  margin: 18px 10px 40px;
+  /* transform을 쓸때 0.2초 천천히 시작 */
+  transition : transform 0.2s ease-in;
+}
+
+.languages .card:hover {
+  transform: translateY(-15px);
+}
+
+.languages .carkd h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* 특징 페이지 */
+.features-head img,
+.docs-head img {
+  width: 200px;
+  justify-self: flex-end;
+}
+
+.features-sub-head img {
+  width: 300px;
+  justify-self: flex-end;
+}
+
+.features-main .card > i {
+  margin-right: 20px;
+}
+
+.features-main .grid {
+  padding : 30px;
+}
+
+.features-main .grid >*:first-child {
+  grid-column: 1 / span 3;
+}
+
+.features-main .grid > *:nth-child(2) {
+  grid-column: 1 / span 2;
+}
+
+/* 문서 페이지 */
+.docs-main h3 {
+  margin: 20px 0;
+}
+
+.docs-main .grid {
+  grid-template-columns: 1fr 2fr;
+  align-items: flex-start;
+}
+
+.docs-main nav li {
+  font-size: 17px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px #ccc solid;
+}
+
+.docs-main ul a:hover {
+  font-weight: bold;
+}
+
+/* Footer */
+.footer .social a {
+  margin: 0 10px;
+}
+
+.fa-github:hover {
+  color: #000000;
+}
+
+.fa-facebook:hover {
+  color: #1773ea;
+}
+
+.fa-instagram:hover {
+  color: #b32e87;
+}
+
+.fa-twitter:hover {
+  color: #1c9cea;
+}
+
+/* 애니메이션 */
+/* 왼쪽에서 오른쪽으로 */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+/* 오른쪽에서 왼쪽으로 */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+/* 위에서 아래로 */
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+/* 아래에서 위로 */
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 반응형 페이지 */
+/* 태블릿 가로 사이즈 850 이하  */
+@media (max-width: 850px) {
+  .grid,
+  .showcase .grid,
+  .stats .grid,
+  .cli .grid,
+  .cloud .grid,
+  .features-main .grid,
+  .docs-main .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .showcase {
+    height: auto;
+  }
+
+  .showcase-text {
+    text-align: center;
+    margin-top: 40px;
+    animation: slideInFromTop 1s ease-in;
+  }
+
+  .showcase-form {
+    justify-self: center;
+    margin: auto;
+    animation: slideInFromBottom 1s ease-in;
+  }
+
+  .cli .grid > *:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .features-head,
+  .features-sub-head,
+  .docs-head {
+    text-align: center;
+  }
+
+  .features-head img,
+  .features-sub-head img,
+  .docs-head img {
+    justify-self: center;
+  }
+
+  .features-main .grid > *:first-child,
+  .features-main .grid > *:nth-child(2) {
+    grid-column: 1;
+  }
+}
+
+/* Mobile  가로 사이즈 500px 이하 */
+@media (max-width: 500px) {
+  .navbar {
+    height: 110px;
+  }
+
+  .navbar .flex {
+    flex-direction: column;
+  }
+
+  .navbar ul {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .showcase-form {
+    width: 300px;
+  }
+
+  .languages .container {
+    margin: 0;
+    padding: 0 5px;
+  }
+  .languages .flex {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+}
